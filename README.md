@@ -12,6 +12,41 @@ A serverless backend for tracking PlayStation game prices and notifying users of
 - 🧪 Local development with Firestore emulator
 - 📦 Serverless architecture (Cloud Functions/Cloud Run)
 
+## 🚀 Quick Start - Local Testing
+
+**Want to test locally before deploying? Start here!**
+
+### Automated (Recommended)
+```bash
+# Linux/macOS
+chmod +x test_local.sh
+./test_local.sh
+
+# Windows
+test_local.bat
+```
+
+### Manual Commands
+```bash
+# 1. Start Firestore emulator (in separate terminal)
+firebase emulators:start --only firestore
+
+# 2. Set environment variables
+export FIRESTORE_EMULATOR_HOST="localhost:8080"
+export GCP_PROJECT="ps-deals-tracker"
+export USE_MOCK_ADAPTER="true"
+
+# 3. Seed data and run price update
+python scripts/seed_data.py
+python scripts/run_price_update.py
+
+# 4. View results at http://localhost:4000/firestore
+```
+
+**📖 For detailed testing instructions, see [TESTING.md](TESTING.md)**
+
+---
+
 ## Tech Stack
 
 - **Python 3.11+**
